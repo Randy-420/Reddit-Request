@@ -1,0 +1,9 @@
+Package: com.randy420.appsmanagerpatch
+Name: Apps Manager Patch
+Author: Randy420 <randy.skinner@hotmail.com>
+Description: ***Made using Flex To Theos updated by: Randy420***
+Depends: mobilesubstrate
+Maintainer: Randy420 <randy.skinner@hotmail.com>
+Architecture: iphoneos-arm
+Section: Tweaks
+Version: 4.2.0
