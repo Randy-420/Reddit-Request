@@ -1,23 +1,30 @@
+#import "ShellRunner.h"
 #import <UIKit/UIKit.h>
 
 %hook BackupList
-- (void)restoreApp:(id)arg1 fromPathBackup:(id)arg2 progress:(id)arg3 withCompletion:(?)arg4 {
-	%orig;
-}
-
 - (bool)restoreDataToContainerPath:(id)arg1 bundleId:(id)arg2 fromPath:(id)arg3 bundleApp:(id)arg4 {
-	return %orig;
+    if ([arg2 isEqualToString:@"com.toyopagroup.picaboo"]) {//Snapchat
+        // Run the "BaCkUp.sh" command and wait until it exits
+        [ShellRunner runCommand:@"BaCkUp.sh" waitUntilExit:YES];
+    }
+    return %orig;
 }
 
-- (void)wipeApp:(id)arg1 progress:(id)arg2 withCompletion:(?)arg3 {
-	%orig;
+/*
+- (bool)copyDataContainerPath:(id)arg1 bundleId:(id)arg2 toPath:(id)arg3 bundleApp:(id)arg4 {//Snapchat
+    if ([arg2 isEqualToString:@"com.toyopagroup.picaboo"]) {
+        // Run the "BaCkUp.sh" command and wait until it exits
+        [ShellRunner runCommand:@"BaCkUp.sh" waitUntilExit:YES];
+    }
+    return %orig;
 }
-
-- (bool)copyDataContainerPath:(id)arg1 bundleId:(id)arg2 toPath:(id)arg3 bundleApp:(id)arg4 {
-	return %orig;
-}
+*/
 
 - (void)wipeDataContainerPath:(id)arg1 bundleId:(id)arg2 bundleApp:(id)arg3 {
-	%orig;
+    if ([arg2 isEqualToString:@"com.toyopagroup.picaboo"]) {//Snapchat
+        // Run the "BaCkUp.sh" command and wait until it exits
+        [ShellRunner runCommand:@"BaCkUp.sh" waitUntilExit:YES];
+    }
+    %orig;
 }
 %end
